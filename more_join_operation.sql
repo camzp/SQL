@@ -118,9 +118,15 @@ WHERE movie.yr = 1962 AND casting.ord = 1
 
 --
 
-(13) Obtain a list, in alphabetical order, of actors who've had at least 30 starring roles
+(13) Obtain a list, in alphabetical order, of actors whove had at least 30 starring roles
 
 --
+
+SELECT name FROM actor
+JOIN casting ON actorid = actor.id
+WHERE casting.ord =1
+GROUP BY name
+HAVING COUNT (name) >=30
 
 
 --
