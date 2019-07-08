@@ -63,6 +63,10 @@ WHERE movieid = 11768
 
 --
 
+SELECT name from movie
+JOIN casting ON (movieid = movie.id)
+JOIN actor ON (actorid = actor.id)
+WHERE title = 'Alien'
 
 --
 
@@ -70,6 +74,10 @@ WHERE movieid = 11768
 
 --
 
+SELECT title FROM movie 
+JOIN casting ON movie.id = movieid
+JOIN actor ON actorid = actor.id
+WHERE actor.name = 'Harrison Ford'
 
 --
 
@@ -77,12 +85,21 @@ WHERE movieid = 11768
 
 --
 
+SELECT title FROM movie 
+JOIN casting ON movie.id = movieid
+JOIN actor ON actorid = actor.id
+WHERE NOT casting.ord = 1 AND actor.name = 'Harrison Ford'
 
 --
 
 (10) List the films together with the leading star for all 1962 films.
 
 --
+
+SELECT movie.title, actor.name FROM movie
+JOIN casting ON (movieid = movie.id)
+JOIN actor ON (actorid = actor.id)
+WHERE movie.yr = 1962 AND casting.ord = 1
 
 
 --
